@@ -1,0 +1,74 @@
+<html>
+    <script>
+        let totalTodo =0;
+        let completeTodo = 0;
+         function updateTodo(){
+             const countDiv = document.getElementById("countTodo");
+             countDiv.textContent = `You have added ${totalTodo} and completed ${completeTodo} 
+             `
+             ;
+
+         }
+        function markasDone(button){
+                    if(button.textContent == "Mark as done!")
+                    {
+                        button.textContent = "Done !";
+                        completeTodo++
+                        updateTodo();
+                    }
+
+                    
+        }
+    
+    function addTodo(puchhu)
+        {
+     const title = document.getElementById("title").value;
+     const description = document.getElementById("desc").value;
+    //  const originalHTML = document.getElementById("container").innerHTML
+// document.createElement
+                const container = document.getElementById("container");
+                const outerdiv = document.createElement("div");
+           const titleDiv = document.createElement("div")
+              titleDiv.innerHTML = title;
+            const   descDiv = document.createElement("div");
+              descDiv.innerHTML = description;
+              const buttonDiv = document.createElement("button")
+              buttonDiv.textContent = "Mark as done!"
+
+              outerdiv.appendChild(titleDiv);
+              outerdiv.appendChild(descDiv);
+              outerdiv.appendChild(buttonDiv);
+
+              buttonDiv.setAttribute("onclick", "markasDone(this)")
+            
+             container.appendChild(outerdiv)
+             if(puchhu.textContent == "Add ToDo"){
+                puchhu.textContent = "Add More";
+             }
+             totalTodo++
+             updateTodo();
+
+            }
+    </script>
+    <div>
+        <input id="title" type="text" placeholder="title...">
+        <br>
+        <br>
+        <input id="desc" type="text" placeholder="description...">
+        <br>
+        <br>
+
+        <button onclick="addTodo(this)">Add ToDo</button>
+
+       
+        <div id="countTodo">You have added 0 todos to you list and done 0.
+
+        </div>
+        <div>
+            <P>     </P>
+        </div>
+       <div id="container">
+         </div>
+
+
+</html>
